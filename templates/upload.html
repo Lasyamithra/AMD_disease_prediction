@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Upload OCT Scan</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="uploadcss">
+<div class="main-section">
+
+    <!-- Upload Section -->
+    <div class="upload-area">
+
+        <h1>Upload OCT Scan</h1>
+
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+
+            <input type="file" name="file" required>
+
+            <button type="submit" class="predict-btn">Analyze Scan</button>
+
+        </form>
+
+    </div>
+
+
+    <!-- Result Section -->
+    <div class="result-area">
+
+        <h1>Prediction Results</h1>
+
+        <p><b>Disease:</b> {{ disease if disease else "Waiting for scan..." }}</p>
+
+        <p><b>Stage:</b> {{ stage if stage else "-" }}</p>
+
+        <p><b>Visibility:</b> {{ visibility if visibility else "-" }}</p>
+
+        <a href="{{ url_for('details', disease=disease, stage=stage, visibility=visibility, image_path=image_path, lesion_percent=lesion_percent, mask_image_path=mask_image_path, overlay_image_path = overlay_image_path) }}">
+<button class="predict-btn">View Detailed Analysis</button>
+</a>
+
+    </div>
+
+</div>
+
+
+<!-- Scroll Section -->
+
+<section class="amd-section">
+
+<h2>Types of Age-Related Macular Degeneration</h2>
+
+<div class="amd-cards">
+
+<div class="amd-card">
+
+<img src="static/imagesUpload/NORMAL-101880-1.jpeg">
+<h3>Normal Retina</h3>
+
+<p>
+A healthy retina shows clear macular structure without abnormal deposits or vessel growth.
+</p>
+
+</div>
+
+
+<div class="amd-card">
+
+<img src="static/imagesUpload/DRUSEN-1487749-2.jpeg">
+<h3>Dry AMD</h3>
+
+<p>
+Dry AMD occurs when the macula gradually thins and small protein deposits called drusen accumulate.
+</p>
+
+</div>
+
+
+<div class="amd-card">
+
+<img src="static/imagesUpload/CNV-103044-10.jpeg">
+
+<h3>Wet AMD</h3>
+
+<p>
+Wet AMD happens when abnormal blood vessels grow under the retina and leak fluid.
+</p>
+
+</div>
+
+</div>
+
+</section>
+</div>
+</body>
+
+</html>

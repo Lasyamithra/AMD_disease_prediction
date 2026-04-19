@@ -1,0 +1,479 @@
+<!--
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Detailed Analysis</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<style>
+
+body{
+background:#f4f6f9;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.details-container{
+width:85%;
+margin:auto;
+padding:50px 0;
+}
+
+.section{
+background:white;
+margin-bottom:40px;
+padding:40px;
+border-radius:10px;
+box-shadow:0px 8px 20px rgba(0,0,0,0.1);
+}
+
+.section h2{
+color:#203a43;
+margin-bottom:20px;
+}
+
+.result-box{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.result-text{
+font-size:18px;
+line-height:1.8;
+}
+
+.result-image img{
+width:300px;
+border-radius:10px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+}
+
+.model-info ul{
+line-height:2;
+}
+
+.tips{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.tip-card{
+flex:1;
+min-width:220px;
+background:#f4f6f9;
+padding:20px;
+border-radius:10px;
+}
+
+.back-btn{
+margin-top:30px;
+padding:12px 30px;
+background:#203a43;
+color:white;
+border:none;
+border-radius:25px;
+cursor:pointer;
+}
+
+.back-btn:hover{
+background:#0f2027;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="details-container">
+
+
+
+
+<div class="section">
+
+<h2>Prediction Details</h2>
+
+<div class="result-box">
+
+<div class="result-text">
+
+<p><b>Disease:</b> {{ disease }}</p>
+
+<p><b>Stage:</b> {{ stage }}</p>
+
+<p><b>Visibility Percentage:</b> {{ visibility }}%</p>
+
+<p>
+The system analyzes retinal fundus images using a deep learning
+model to detect Age-Related Macular Degeneration (AMD) and identify
+its stage based on visible retinal features.
+</p>
+
+</div>
+
+<div class="result-image">
+
+{% if image_path %} <img src="{{ '/' + image_path }}">
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="section">
+
+<h2>About Age-Related Macular Degeneration</h2>
+
+<p>
+Age-Related Macular Degeneration (AMD) is a medical condition
+that affects the macula, the central part of the retina responsible
+for sharp vision. It can cause blurred or reduced central vision
+and is a leading cause of vision loss in older adults.
+</p>
+
+<p>
+There are two main types:
+<ul>
+<li><b>Dry AMD</b> – gradual thinning of the macula.</li>
+<li><b>Wet AMD</b> – abnormal blood vessel growth under the retina.</li>
+</ul>
+</p>
+
+</div>
+
+
+
+<div class="section">
+
+<h2>Prevention Tips</h2>
+
+<div class="tips">
+
+<div class="tip-card">
+<h3>Regular Eye Checkups</h3>
+<p>Routine eye examinations help detect AMD early.</p>
+</div>
+
+<div class="tip-card">
+<h3>Healthy Diet</h3>
+<p>Foods rich in vitamins, antioxidants, and omega-3 help maintain retinal health.</p>
+</div>
+
+<div class="tip-card">
+<h3>Avoid Smoking</h3>
+<p>Smoking increases the risk of macular degeneration.</p>
+</div>
+
+</div>
+</div>
+
+
+
+
+<div class="section model-info">
+
+<h2>Model Information</h2>
+
+<ul>
+
+<li><b>Model Type:</b> Convolutional Neural Network (CNN)</li>
+
+<li><b>Framework:</b> TensorFlow / Keras</li>
+
+<li><b>Image Size:</b> 224 × 224</li>
+
+<li><b>Dataset:</b> Retinal Fundus Image Dataset</li>
+
+<li><b>Purpose:</b> Early detection of AMD stages</li>
+
+</ul>
+
+</div>
+
+
+
+
+
+<center>
+
+<a href="/upload">
+
+<button class="back-btn">
+
+Back to Upload
+
+</button>
+
+</a>
+
+</center>
+
+</div>
+
+</body>
+
+</html>
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Detailed Analysis</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<style>
+body {
+    background: #f4f6f9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.details-container {
+    width: 85%;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.section {
+    background: white;
+    margin-bottom: 40px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+}
+
+.section h2 {
+    color: #203a43;
+    margin-bottom: 20px;
+}
+
+.result-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.result-text {
+    font-size: 18px;
+    line-height: 1.8;
+    flex: 1;
+    min-width: 250px;
+}
+
+.result-image img {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+/* OCT scan panel row */
+.scan-panels {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.scan-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.scan-panel img {
+    width: 260px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+.scan-panel .panel-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #203a43;
+    text-align: center;
+}
+
+.scan-panel .panel-sublabel {
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    margin-top: -6px;
+}
+
+/* Lesion % badge */
+.lesion-badge {
+    display: inline-block;
+    background: #203a43;
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.model-info ul {
+    line-height: 2;
+}
+
+.tips {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tip-card {
+    flex: 1;
+    min-width: 220px;
+    background: #f4f6f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.back-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: #203a43;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background: #0f2027;
+}
+</style>
+</head>
+
+<body>
+<div class="details-container">
+
+    <!-- Prediction Result -->
+    <div class="section">
+        <h2>Prediction Details</h2>
+
+        <div class="result-box">
+            <div class="result-text">
+                <p><b>Disease:</b> {{ disease }}</p>
+                <p><b>Stage:</b> {{ stage }}</p>
+                <p><b>Visibility Percentage:</b> {{ visibility }}</p>
+                {% if lesion_percent is not none %}
+                <p><b>Lesion Percentage:</b>
+                    <span class="lesion-badge">{{ lesion_percent }}%</span>
+                </p>
+                {% endif %}
+                <p>
+                    The system analyzes retinal OCT images using a deep learning
+                    model to detect Age-Related Macular Degeneration (AMD) and identify
+                    its stage based on visible retinal features.
+                </p>
+            </div>
+
+            <div class="result-image">
+                {% if image_path %}
+                <img src="{{ image_path }}" alt="Uploaded OCT">
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Lesion mask panels (shown only when mask_image_path is available) -->
+        {% if mask_image_path %}
+        <h3 style="margin-top:30px; color:#203a43;">Lesion Segmentation Analysis</h3>
+        <div class="scan-panels">
+
+            <div class="scan-panel">
+                <img src="{{ image_path }}" alt="Input OCT Scan">
+                <div class="panel-label">Input OCT Scan</div>
+            </div>
+
+            <div class="scan-panel">
+                <img src="{{ mask_image_path }}" alt="Predicted Lesion Mask">
+                <div class="panel-label">Predicted Lesion Mask</div>
+                <div class="panel-sublabel">Lesion: {{ lesion_percent }}%</div>
+            </div>
+
+            <div class="scan-panel">
+                <img src="{{ overlay_image_path }}" alt="Overlay">
+                <div class="panel-label">Stage: {{ stage }}</div>
+                <div class="panel-sublabel">Lesion %: {{ lesion_percent }}%</div>
+            </div>
+
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Disease Explanation -->
+    <div class="section">
+        <h2>About Age-Related Macular Degeneration</h2>
+        <p>
+            Age-Related Macular Degeneration (AMD) is a medical condition
+            that affects the macula, the central part of the retina responsible
+            for sharp vision. It can cause blurred or reduced central vision
+            and is a leading cause of vision loss in older adults.
+        </p>
+        <p>
+            There are two main types:
+        </p>
+        <ul>
+            <li><b>Dry AMD</b> – gradual thinning of the macula.</li>
+            <li><b>Wet AMD</b> – abnormal blood vessel growth under the retina.</li>
+        </ul>
+    </div>
+
+    <!-- Prevention Tips -->
+    <div class="section">
+        <h2>Prevention Tips</h2>
+        <div class="tips">
+            <div class="tip-card">
+                <h3>Regular Eye Checkups</h3>
+                <p>Routine eye examinations help detect AMD early.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Healthy Diet</h3>
+                <p>Foods rich in vitamins, antioxidants, and omega-3 help maintain retinal health.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Avoid Smoking</h3>
+                <p>Smoking increases the risk of macular degeneration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Information -->
+    <div class="section model-info">
+        <h2>Model Information</h2>
+        <ul>
+            <li><b>Disease Model:</b> Convolutional Neural Network (CNN) — Keras</li>
+            <li><b>Stage Model:</b> U-Net + Stage Classifier — PyTorch</li>
+            <li><b>Image Size:</b> 224 × 224 (disease) / 256 × 256 (stage)</li>
+            <li><b>Dataset:</b> Retinal OCT Image Dataset / AMD-SD</li>
+            <li><b>Purpose:</b> Early detection and staging of AMD</li>
+        </ul>
+    </div>
+
+    <center>
+        <a href="/upload">
+            <button class="back-btn">Back to Upload</button>
+        </a>
+    </center>
+
+</div>
+</body>
+</html>
