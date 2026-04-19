@@ -1,0 +1,210 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+.indexcss{
+height:100vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.uploadcss{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+min-height:100vh;
+display:block;
+
+}
+
+.container{
+width:90%;
+height:80vh;
+background:white;
+display:flex;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0px 10px 30px rgba(0,0,0,0.3);
+}
+
+.image-section{
+flex:2.5;
+overflow:hidden;
+}
+
+.image-section img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 1s;
+}
+
+.image-section img:hover{
+transform:scale(1.05);
+}
+
+.content-section{
+flex:1.5;
+padding:60px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+animation:fadeIn 2s;
+}
+
+.content-section h1{
+font-size:36px;
+color:#203a43;
+margin-bottom:20px;
+}
+
+.content-section p{
+font-size:16px;
+color:#555;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+.start-btn{
+padding:14px 32px;
+font-size:16px;
+background:#2c5364;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:all 0.3s ease;
+}
+
+.start-btn:hover{
+background:#1b2d36;
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn{
+0%{
+opacity:0;
+transform:translateX(30px);
+}
+
+100%{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+
+
+.main-section{
+display:flex;
+min-height:90vh;
+
+}
+/* UPLOAD AREA */
+
+.upload-area{
+flex:1;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.upload-area h1{
+margin-bottom:40px;
+}
+
+.upload-area input{
+margin-bottom:20px;
+}
+
+.predict-btn{
+padding:14px 35px;
+font-size:16px;
+background:white;
+color:#203a43;
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.predict-btn:hover{
+transform:scale(1.05);
+}
+
+
+/* RESULT AREA */
+
+.result-area{
+flex:1;
+background:#f4f6f9;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-size:20px;
+}
+
+.result-area h1{
+margin-bottom:30px;
+color:#203a43;
+}
+
+.result-area p{
+margin:10px;
+}
+
+
+/* AMD INFO SECTION */
+
+.amd-section{
+padding:80px;
+width:100%;
+text-align:center;
+background:white;
+}
+
+.amd-section h2{
+font-size:32px;
+margin-bottom:50px;
+color:#203a43;
+}
+
+.amd-cards{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.amd-card{
+width:300px;
+background:#f4f6f9;
+padding:25px;
+border-radius:10px;
+box-shadow:0px 10px 20px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.amd-card img{
+width:150px;
+height:150px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.amd-card:hover{
+transform:translateY(-10px);
+}
+
+.predict-btn:hover{
+transform:scale(1.05);
+background:#203a43cc;
+color: white;
+}
